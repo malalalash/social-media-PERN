@@ -9,6 +9,7 @@ const logout = async () => {
       },
       credentials: "include",
     });
+    return response;
   } catch (error) {
     console.error(error);
   }
