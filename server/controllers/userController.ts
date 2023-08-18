@@ -154,6 +154,13 @@ export const logoutUser = async (req: Request, res: Response) => {
 
 export const getUser = async (req: Request, res: Response) => {
   const { user } = req;
+
+  if (!user) {
+    return res.status(404).json({
+      message: "User not found",
+    });
+  }
+  
   res.status(200).json({
     id: user?.id,
     username: user?.username,
