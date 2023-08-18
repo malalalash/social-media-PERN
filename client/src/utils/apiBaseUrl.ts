@@ -1,3 +1,3 @@
-const baseUrl = import.meta.env.API_BASE_URL;
+const baseUrl = "https://social-pern.onrender.com";
 
 export default baseUrl;
