@@ -10,9 +10,10 @@ CREATE TABLE users (
 
 CREATE TABLE posts (
   id SERIAL PRIMARY KEY,
-  description VARCHAR(255) NOT NULL,
+  title VARCHAR(255) NOT NULL,
   img VARCHAR(255),
   user_id INTEGER NOT NULL,
+  likes INTEGER DEFAULT 0,
   created_at TIMESTAMPTZ DEFAULT NOW(),
   CONSTRAINT fk_user
     FOREIGN KEY (user_id)
