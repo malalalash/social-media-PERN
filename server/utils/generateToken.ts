@@ -12,6 +12,7 @@ const generateToken = (res: Response, payload: any) => {
     httpOnly: true,
     secure: true,
     sameSite: "lax",
+    domain: "onrender.com",
     maxAge: 30 * 24 * 60 * 60 * 1000,
     expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
   });
