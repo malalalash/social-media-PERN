@@ -1,3 +1,3 @@
-const baseUrl = "https://social-pern.onrender.com";
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
 export default baseUrl;
