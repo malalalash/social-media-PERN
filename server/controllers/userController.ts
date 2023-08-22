@@ -143,7 +143,11 @@ export const loginUser = async (req: Request, res: Response) => {
 export const logoutUser = async (req: Request, res: Response) => {
   res.cookie("token", "", {
     httpOnly: true,
+    secure: true,
+    sameSite: "lax",
+    domain: "getinhere.pl",
     expires: new Date(0),
+    maxAge: 0,
   });
 
   res.status(200).json({
@@ -160,7 +164,7 @@ export const getUser = async (req: Request, res: Response) => {
       message: "User not found",
     });
   }
-  
+
   res.status(200).json({
     id: user?.id,
     username: user?.username,
