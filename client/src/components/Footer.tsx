@@ -10,6 +10,7 @@ const Footer = () => {
           href="https://github.com/malalalash"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Read more about creator on github"
         >
           <BsGithub size={25} style={{ color: "white" }} />
         </a>

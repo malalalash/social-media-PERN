@@ -70,6 +70,7 @@ const Header = () => {
           <button
             onClick={handleFocus}
             type="button"
+            name="search"
             className="btn btn-ghost btn-circle sm:hidden text-base-100"
           >
             <svg
