@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import pool from "../db";
-import { deleteImage, uploadImage } from "../cloudinary";
+import { deleteImage, resizeImage, uploadImage } from "../cloudinary";
 export const getAllPosts = async (req: Request, res: Response) => {
   try {
     const page = req.query.page ? parseInt(req.query.page as string) : 1;
@@ -39,11 +39,11 @@ export const createPost = async (req: Request, res: Response) => {
 
     if (img) {
       const response = await uploadImage(img);
-      const imageURL = response?.secure_url;
       const public_id = response?.public_id;
+      const resizedImage = resizeImage(public_id!);
       const newPost = await pool.query(
         "INSERT INTO posts (description, img, user_id, public_id) VALUES ($1, $2, $3, $4) RETURNING *",
-        [description, imageURL, userId, public_id]
+        [description, resizedImage, userId, public_id]
       );
       return res.status(201).json({
         message: "Post created successfully",

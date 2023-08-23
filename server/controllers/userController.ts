@@ -3,7 +3,7 @@ import validator from "validator";
 import bcrypt from "bcrypt";
 import pool from "../db";
 import generateToken from "../utils/generateToken";
-import { uploadImage } from "../cloudinary";
+import { resizeImage, uploadImage } from "../cloudinary";
 
 export const createUser = async (req: Request, res: Response) => {
   try {
@@ -186,11 +186,12 @@ export const updateAvatar = async (req: Request, res: Response) => {
     }
 
     const response = await uploadImage(avatar);
-    const imageURL = response?.secure_url;
+    const public_id = response?.public_id;
+    const resizedImage = resizeImage(public_id!);
 
     const updateAvatar = await pool.query(
       `UPDATE users SET avatar = $1 WHERE id = $2`,
-      [imageURL, userId]
+      [resizedImage, userId]
     );
     return res.status(200).json({
       message: "Avatar updated",
@@ -215,11 +216,12 @@ export const updateBgImg = async (req: Request, res: Response) => {
     }
 
     const response = await uploadImage(image);
-    const imageURL = response?.secure_url;
+    const public_id = response?.public_id;
+    const resizedImage = resizeImage(public_id!, 1920, 1080);
 
     const updateBgImage = await pool.query(
       `UPDATE users SET bg_img = $1 WHERE id = $2`,
-      [imageURL, userId]
+      [resizedImage, userId]
     );
     return res.status(200).json({
       message: "Background image updated",
