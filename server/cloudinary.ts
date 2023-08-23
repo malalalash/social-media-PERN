@@ -16,6 +16,12 @@ export const uploadImage = async (file: string) => {
 
   try {
     const result = await cloudinary.uploader.upload(file, options);
+    const url = cloudinary.url(result.public_id, {
+      width: 600,
+      height: 600,
+      crop: "fill",
+    });
+    console.log(url, result);
     return result;
   } catch (error) {
     console.error(error);
