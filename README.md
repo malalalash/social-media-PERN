@@ -22,6 +22,7 @@ Deployed to Render
 - Upload images/avatar/background image
 - Edit posts/comments/profile
 - Search for users
+- Infinite scroll for posts
 
 # Images:
 
