@@ -96,7 +96,7 @@ const Post = ({ post }: { post: PostType }) => {
               <img
                 src={post.img}
                 alt="post image"
-                className="object-center mx-auto"
+                className="object-center mx-auto w-full h-full"
               />
             </div>
           )}
