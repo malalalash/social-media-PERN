@@ -44,7 +44,6 @@ export const resizeImage = (
     height: h,
     crop: "fill",
     gravity: "center",
-    format: "jpg",
     quality: "auto",
   });
   return url;
