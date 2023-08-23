@@ -71,6 +71,7 @@ const Header = () => {
             onClick={handleFocus}
             type="button"
             name="search"
+            aria-label="Search for user"
             className="btn btn-ghost btn-circle sm:hidden text-base-100"
           >
             <svg
