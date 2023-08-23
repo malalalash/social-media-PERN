@@ -12,19 +12,18 @@ const Posts = () => {
     rootMargin: "0px",
   });
   const limit = 10;
-  const { data, fetchNextPage, isSuccess, hasNextPage, isLoading } =
-    useInfiniteQuery(
-      ["posts"],
-      ({ pageParam = 1 }) => getInfinitePosts(pageParam, limit),
-      {
-        getNextPageParam: (nextPage) => {
-          if (nextPage.posts.length < limit) {
-            return undefined;
-          }
-          return nextPage.nextPage;
-        },
-      }
-    );
+  const { data, fetchNextPage, isSuccess, hasNextPage } = useInfiniteQuery(
+    ["posts"],
+    ({ pageParam = 1 }) => getInfinitePosts(pageParam, limit),
+    {
+      getNextPageParam: (nextPage) => {
+        if (nextPage.posts.length < limit) {
+          return undefined;
+        }
+        return nextPage.nextPage;
+      },
+    }
+  );
 
   useEffect(() => {
     if (inView && hasNextPage) {
