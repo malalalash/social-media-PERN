@@ -1,8 +1,8 @@
 # Get In Here - Social media app built with PERN stack 
 
-Link to live demo: https://www.getinhere.pl//
+Link to live demo: https://www.getinhere.pl/
 
-# Deployed to Render
+Deployed to Render
 
 # Technologies used:
 - VITE/REACT
@@ -25,4 +25,7 @@ Link to live demo: https://www.getinhere.pl//
 
 # Image:
 
-![Image Alt Text](screenshot/weatherapp.png)
+![Image Alt Text](screenshot/1.png)
+![Image Alt Text](screenshot/2.png)
+![Image Alt Text](screenshot/3.png)
+![Image Alt Text](screenshot/4.png)
