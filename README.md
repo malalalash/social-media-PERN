@@ -25,7 +25,7 @@ Deployed to Render
 
 # Image:
 
-![Image Alt Text](screenshot/1.png)
-![Image Alt Text](screenshot/2.png)
-![Image Alt Text](screenshot/3.png)
-![Image Alt Text](screenshot/4.png)
+![Image Alt Text](screenshots/1.png)
+![Image Alt Text](screenshots/2.png)
+![Image Alt Text](screenshots/3.png)
+![Image Alt Text](screenshots/4.png)
