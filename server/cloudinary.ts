@@ -43,6 +43,9 @@ export const resizeImage = (
     width: w,
     height: h,
     crop: "fill",
+    gravity: "center",
+    format: "jpg",
+    quality: "good",
   });
   return url;
 };
