@@ -39,9 +39,10 @@ export const resizeImage = (
   w: number = 600,
   h: number = 600
 ) => {
-  cloudinary.url(public_id, {
+  const url = cloudinary.url(public_id, {
     width: w,
     height: h,
     crop: "fill",
   });
+  return url;
 };
