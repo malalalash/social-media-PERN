@@ -185,7 +185,10 @@ const Comments = ({
                       value={editText}
                       onChange={(e) => setEditText(e.target.value)}
                     />
-                    <button disabled={loading} className="absolute right-0 p-2">
+                    <button
+                      disabled={loading}
+                      className="ml-2 hover:bg-base-300 rounded-full"
+                    >
                       <BsCheck style={{ color: "green" }} size={22} />
                     </button>
                   </form>
