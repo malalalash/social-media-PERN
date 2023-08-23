@@ -2,7 +2,7 @@ import { BsGithub } from "react-icons/bs";
 
 const Footer = () => {
   return (
-    <footer className="footer footer-center p-4 mt-10 bg-gray-800 fixed bottom-0">
+    <footer className="footer footer-center p-4 bg-gray-800 bottom-0">
       <div className="flex flex-col sm:flex-row items-center justify-center">
         <p className="text-white text-base">Made by Mikołaj Malarczyk</p>
         <a
