@@ -1,10 +1,11 @@
-import Post from "./Post";
 import { useInfiniteQuery } from "react-query";
 import { getInfinitePosts } from "../../api/posts/getInfinitePosts";
 import { PostType } from "../../types";
 import Skeleton from "../Skeleton";
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, lazy, Suspense } from "react";
 import { useInView } from "react-intersection-observer";
+const Post = lazy(() => import("./Post"));
+
 const Posts = () => {
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -31,16 +32,6 @@ const Posts = () => {
     }
   }, [inView, hasNextPage]);
 
-  if (isLoading) {
-    return (
-      <>
-        <Skeleton />
-        <Skeleton />
-        <Skeleton />
-      </>
-    );
-  }
-
   if (isSuccess)
     return (
       <section>
@@ -49,7 +40,9 @@ const Posts = () => {
             {page.posts.map((post: PostType) => {
               return (
                 <article ref={ref} key={post.id}>
-                  <Post post={post} />
+                  <Suspense fallback={<Skeleton />}>
+                    <Post post={post} />
+                  </Suspense>
                 </article>
               );
             })}
