@@ -23,7 +23,7 @@ Deployed to Render
 - Edit posts/comments/profile
 - Search for users
 
-# Image:
+# Images:
 
 ![Image Alt Text](screenshots/1.png)
 ![Image Alt Text](screenshots/2.png)
