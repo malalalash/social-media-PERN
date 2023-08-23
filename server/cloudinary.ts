@@ -36,8 +36,8 @@ export const deleteImage = async (public_id: string) => {
 
 export const resizeImage = (
   public_id: string,
-  w: number = 600,
-  h: number = 600
+  w: number = 750,
+  h: number = 750
 ) => {
   const url = cloudinary.url(public_id, {
     width: w,
