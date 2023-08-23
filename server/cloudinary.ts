@@ -45,7 +45,7 @@ export const resizeImage = (
     crop: "fill",
     gravity: "center",
     format: "jpg",
-    quality: "good",
+    quality: "auto",
   });
   return url;
 };
