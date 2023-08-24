@@ -53,12 +53,12 @@ const CreatePost = () => {
     setImage("");
   };
   return (
-    <div className="p-5 relative shadow-lg border-t border-t-gray-200/60 rounded-3xl mx-5 md:mx-0">
+    <div className="p-5 relative shadow-lg border-t border-t-gray-200/60 rounded-3xl mx-5 md:mx-0 dark:bg-gray-800 dark:border-none dark:shadow-none">
       <div className="flex items-center border-b border-gray-200 gap-5 pb-3">
         <img
           src={user?.avatar}
           alt={`${user?.username} profile image`}
-          className="w-10 h-10 md:w-14 md:h-14 object-cover rounded-full"
+          className="w-10 h-10 md:w-14 md:h-14 object-cover rounded-full dark:outline-none"
         />
         <form id="share" onSubmit={handleSubmit} className="w-full">
           <input
@@ -66,7 +66,7 @@ const CreatePost = () => {
             onChange={(e) => setDescription(e.target.value)}
             type="text"
             autoComplete="off"
-            className="w-full p-2 border-none focus:outline-gray-300 md:text-lg placeholder:text-sm sm:placeholder:text-base"
+            className="w-full rounded-full p-2 px-3 border-none md:text-lg placeholder:text-sm sm:placeholder:text-base dark:bg-transparent  focus:outline dark:focus:outline-gray-700 dark:text-white"
             placeholder={`What's on your mind ${user?.username}?`}
           />
         </form>
@@ -82,7 +82,7 @@ const CreatePost = () => {
           />
           <label
             htmlFor="file"
-            className="flex items-center cursor-pointer gap-2 text-gray-500 hover:text-black"
+            className="flex items-center cursor-pointer gap-2 text-gray-500 hover:text-black dark:hover:text-white"
           >
             {image ? (
               <img src={image} className="w-8 h-8" />
@@ -96,7 +96,7 @@ const CreatePost = () => {
           {image && (
             <button
               onClick={handleDelete}
-              className="text-gray-500 hover:text-black hover:bg-gray-100 p-2 text-sm font-semibold"
+              className="text-gray-500 hover:text-black dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:bg-gray-100 p-2 text-sm font-semibold"
             >
               <FaTrash size={19} />
             </button>
@@ -106,7 +106,7 @@ const CreatePost = () => {
           disabled={loading}
           type="submit"
           form="share"
-          className="btn btn-xs sm:btn-sm btn-primary"
+          className="btn btn-xs sm:btn-sm btn-primary dark:btn-neutral dark:hover:text-white"
         >
           Share
         </button>

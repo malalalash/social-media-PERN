@@ -124,7 +124,7 @@ const Comments = ({
           <button
             disabled={loading}
             type="submit"
-            className="btn btn-xs sm:btn-sm btn-neutral"
+            className="btn btn-xs sm:btn-sm btn-neutral dark:hover:text-white"
           >
             Add
           </button>
@@ -139,7 +139,7 @@ const Comments = ({
                 src={comment.avatar}
                 alt={`${comment.username} profile image`}
               />
-              <div className="bg-gray-100 w-full max-w-sm px-3 rounded-xl py-1">
+              <div className="bg-gray-100 dark:bg-base-200 w-full max-w-sm px-3 rounded-xl py-1">
                 <div className="flex items-center justify-between">
                   <Link
                     to={`/user/${comment.user_id}`}
@@ -198,7 +198,7 @@ const Comments = ({
               </div>
             </div>
             <div className="ml-10">
-              <span className="text-xs text-gray-600">
+              <span className="text-xs text-gray-600 dark:text-gray-400">
                 {dateFormat(comment.created_at)}
               </span>
             </div>

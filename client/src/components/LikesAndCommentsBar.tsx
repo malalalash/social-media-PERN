@@ -87,7 +87,7 @@ const LikesAndCommentsBar = ({
             className="flex items-center gap-2 transform duration-200 hover:bg-base-200 p-1 rounded-full px-2"
           >
             <span className="text-base">
-              <FaRegCommentDots size={20} style={{ color: "black" }} />
+              <FaRegCommentDots size={20} />
             </span>
             {comments?.comments?.length || "0"}{" "}
             {comments?.comments?.length === 1 ? "Comment" : "Comments"}

@@ -62,7 +62,7 @@ const Header = () => {
       <nav className="navbar items-center w-full px-5 justify-between max-w-4xl mx-auto">
         <Link
           to="/"
-          className="rounded-full text-base-100 text-2xl sm:text-3xl font-extrabold"
+          className="rounded-full text-white text-2xl sm:text-3xl font-extrabold"
         >
           GetInHere
         </Link>
@@ -72,7 +72,7 @@ const Header = () => {
             type="button"
             name="search"
             aria-label="Search for user"
-            className="btn btn-ghost btn-circle sm:hidden text-base-100"
+            className="btn btn-ghost dark:text-white btn-circle sm:hidden text-base-100"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -101,7 +101,7 @@ const Header = () => {
             onChange={handleSearch}
             onBlur={handleBlur}
             placeholder="Search for user..."
-            className="input opacity-0 sm:opacity-100 sm:block transition-all transform duration-300 ease-in-out input-md max-h-10 sm:text-base rounded-full input-bordered w-auto"
+            className="input opacity-0 sm:opacity-100 sm:block transition-all transform duration-300 ease-in-out input-md max-h-10 sm:text-base rounded-full input-bordered w-auto dark:text-white"
           />
         </div>
 
@@ -110,7 +110,7 @@ const Header = () => {
             <ul className="bg-white sm:max-w-max min-w-[300px] w-full mx-auto shadow-lg">
               {result.users.map((profile: SearchUserType) => (
                 <li
-                  className="p-1 pl-3 bg-white transform duration-200 hover:bg-base-200 border-x border-x-base-300 border-b border-b-base-300"
+                  className="p-1 pl-3 bg-white dark:bg-gray-800 dark:border dark:border-base-100 transform duration-200 hover:bg-base-200 border-x border-x-base-300 border-b border-b-base-300 dark:hover:bg-gray-700 dark:hover:text-gray-300"
                   key={profile.id}
                 >
                   <Link
@@ -131,7 +131,7 @@ const Header = () => {
         )}
         {result.users.length === 0 && searchTerm !== "" ? (
           <div className="absolute top-0 left-0 mt-16 w-full mx-auto sm:pl-[120px]">
-            <div className="bg-white sm:max-w-max min-w-[300px] w-full mx-auto border  shadow-lg">
+            <div className="bg-white sm:max-w-max min-w-[300px] w-full mx-auto border  shadow-lg dark:bg-base-100 dark:border-gray-950">
               <p className="p-1 pl-3 text-center border-x-base-300 sm:text-lg">
                 {loading ? "Loading... 🤔" : "Could not find any users... 😖"}
               </p>
@@ -155,7 +155,7 @@ const Header = () => {
           </div>
           <ul
             tabIndex={0}
-            className="mt-5 z-[1] gap-1 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box min-w-max w-52"
+            className="mt-5 z-[1] gap-1 p-2 shadow menu menu-sm dropdown-content bg-white rounded-box min-w-max w-52 dark:bg-base-100 dark:border"
           >
             <li className="border-b pointer-events-none">
               <p className="font-semibold text-base sm:text-lg">

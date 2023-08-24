@@ -91,7 +91,7 @@ const UpdateProfileModal = ({ handleModal }: { handleModal: () => void }) => {
 
   return (
     <div className="w-full min-h-full top-0 left-0 fixed z-50 bg-black/30 flex items-center justify-center">
-      <div className="bg-white container max-w-2xl mx-5 p-5 rounded-xl shadow-xl">
+      <div className="bg-white container max-w-2xl mx-5 p-5 rounded-xl shadow-xl dark:bg-gray-800">
         <div className="flex items-center justify-between border-b pb-2">
           <h3 className="text-xl sm:text-2xl">Edit Profile</h3>
           <button onClick={handleModal} className="text-xl text-gray-500">
@@ -101,7 +101,7 @@ const UpdateProfileModal = ({ handleModal }: { handleModal: () => void }) => {
         <form
           id="updateProfile"
           onSubmit={handleUpdate}
-          className="py-5 border-b flex flex-col gap-2"
+          className="py-5 border-b flex flex-col gap-2 dark:text-gray-300"
         >
           <label htmlFor="username" className="text-base font-semibold">
             Username
@@ -185,7 +185,7 @@ const UpdateProfileModal = ({ handleModal }: { handleModal: () => void }) => {
       </div>
       {openDeleteModal && (
         <div className="absolute bg-black/50 w-full min-h-screen top-0 left-0 flex items-center justify-center">
-          <div className="bg-white min-h-[200px] container max-w-lg mx-5 p-5 rounded-xl shadow-xl flex flex-col justify-between">
+          <div className="bg-white min-h-[200px] container max-w-lg mx-5 p-5 rounded-xl shadow-xl flex flex-col justify-between dark:bg-gray-800">
             <p className="text-center sm:text-xl mt-3">
               Are you sure you want to delete your account?
             </p>

@@ -212,7 +212,7 @@ const Profile = () => {
             </h2>
             <button
               onClick={handleModal}
-              className="btn btn-neutral btn-sm hidden sm:block"
+              className="btn btn-neutral btn-sm hidden sm:block dark:hover:text-white"
             >
               Edit Profile
             </button>
