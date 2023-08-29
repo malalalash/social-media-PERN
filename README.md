@@ -23,6 +23,7 @@ Deployed to Render
 - Edit posts/comments/profile
 - Search for users
 - Infinite scroll for posts
+- follow/unfollow user
 
 # Images:
 
