@@ -3,7 +3,7 @@ import { FaRegThumbsUp } from "react-icons/fa";
 import { FaThumbsUp } from "react-icons/fa";
 import { likePost } from "../api/likes/likePost";
 import { dislikePost } from "../api/likes/dislikePost";
-import { LikeType, PostType } from "../types";
+import { PostType } from "../types";
 import { getLikes } from "../api/likes/getLikes";
 import { useMutation, useQueryClient, useQuery } from "react-query";
 import { useUserStore } from "../store/userStore";
@@ -23,7 +23,9 @@ const LikesAndCommentsBar = ({
   const { data } = useQuery(["likes", post.id], () => getLikes(post.id), {
     enabled: !!post.id,
   });
-  const liked = data?.likes.some((like: LikeType) => like.user_id === user?.id);
+  const liked = data?.likes.some(
+    (like: { user_id: number }) => like.user_id === user?.id
+  );
 
   const comments = queryClient.getQueryData<CommentsData>([
     "comments",
