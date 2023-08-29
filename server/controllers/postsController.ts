@@ -153,7 +153,7 @@ export const getUserPosts = async (req: Request, res: Response) => {
       [id]
     );
 
-    if (getPosts.rows.length === 0) {
+    if (getPosts.rows.length < 0) {
       return res.status(404).json({
         message: "Posts not found",
       });

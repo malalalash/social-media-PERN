@@ -23,10 +23,6 @@ export type PostType = {
   public_id: string | null;
 };
 
-export type LikeType = {
-  user_id: number;
-};
-
 type CommentsType = {
   avatar: string;
   content: string;

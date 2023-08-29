@@ -1,17 +1,21 @@
 import { useUserStore } from "../store/userStore";
 import { useParams, Navigate } from "react-router-dom";
-import { useQuery } from "react-query";
+import { useQuery, useMutation, useQueryClient } from "react-query";
 import { useEffect } from "react";
 import { getUser } from "../api/user/getUser";
 import Spinner from "../components/Spinner";
 import Post from "../components/posts/Post";
 import { PostType } from "../types";
 import { getUserPosts } from "../api/posts/getUserPosts";
+import { getFollowers } from "../api/relationships/getFollowers";
+import { followUser } from "../api/relationships/followUser";
+import { getFollowed } from "../api/relationships/getFollowed";
 
 const UserProfile = () => {
   const user = useUserStore((state) => state.user);
   const { userId } = useParams();
   const userIdNumber = Number(userId);
+  const queryClient = useQueryClient();
 
   if (user?.id === userIdNumber) {
     return <Navigate to="/profile" />;
@@ -29,10 +33,33 @@ const UserProfile = () => {
     getUserPosts(userIdNumber)
   );
 
+  const { data: followers } = useQuery(["followers", userIdNumber], () =>
+    getFollowers(userIdNumber)
+  );
+
+  const { data: following } = useQuery(["following", userIdNumber], () =>
+    getFollowed(userIdNumber)
+  );
+
+  const followMutation = useMutation(followUser, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["followers"]);
+    },
+  });
+
+  const handleFollow = () => {
+    followMutation.mutate(userIdNumber);
+  };
+
+  const followed = followers?.followers?.some(
+    (follower: { follower_id: number }) => follower.follower_id === user?.id
+  );
+
+  const profile = data?.userData;
+
   if (isLoading) {
     return <Spinner />;
   }
-  const profile = data?.userData;
 
   return (
     <main className="min-h-screen">
@@ -55,6 +82,26 @@ const UserProfile = () => {
             <h2 className="text-gray-500 text-base sm:text-lg">
               {profile?.email}
             </h2>
+          </div>
+          <button
+            onClick={handleFollow}
+            className="btn btn-primary btn-xs mt-2 sm:btn-sm sm:mt-0 dark:hover:text-white"
+          >
+            {followed ? "Unfollow" : "Follow"}
+          </button>
+          <div className="flex items-center justify-between gap-10 text-xs sm:text-base">
+            <p className="flex flex-col items-center justify-center">
+              <span className="font-semibold text-base sm:text-lg">
+                {followers?.followers.length}
+              </span>{" "}
+              followers
+            </p>
+            <p className="flex flex-col items-center justify-center">
+              <span className="font-semibold text-base sm:text-lg">
+                {following?.following.length}
+              </span>{" "}
+              following
+            </p>
           </div>
         </div>
       </div>

@@ -11,6 +11,8 @@ import { PostType } from "../types";
 import { getUserPosts } from "../api/posts/getUserPosts";
 import Post from "../components/posts/Post";
 import Spinner from "../components/Spinner";
+import { getFollowers } from "../api/relationships/getFollowers";
+import { getFollowed } from "../api/relationships/getFollowed";
 
 const Profile = () => {
   const user = useUserStore((state) => state.user);
@@ -27,6 +29,14 @@ const Profile = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const { data: followers } = useQuery(["followers", user?.id], () =>
+    getFollowers(user?.id!)
+  );
+
+  const { data: following } = useQuery(["following", user?.id], () =>
+    getFollowed(user?.id!)
+  );
 
   const avatarMutation = useMutation(updateAvatar, {
     onMutate: () => {
@@ -216,6 +226,20 @@ const Profile = () => {
             >
               Edit Profile
             </button>
+            <div className="flex items-center justify-between gap-10 text-xs sm:text-base">
+              <p className="flex flex-col items-center justify-center">
+                <span className="font-semibold text-base sm:text-lg">
+                  {followers?.followers.length}
+                </span>{" "}
+                followers
+              </p>
+              <p className="flex flex-col items-center justify-center">
+                <span className="font-semibold text-base sm:text-lg">
+                  {following?.following.length}
+                </span>{" "}
+                following
+              </p>
+            </div>
           </div>
         </div>
       </div>
